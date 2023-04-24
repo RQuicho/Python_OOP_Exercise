@@ -28,9 +28,6 @@ class WordFinder:
         self.word = self.convert_file(words_file)
         print (f"{len(self.word)} words read.")
 
-    # def __repr__(self):
-    #     "Shows representation."
-    #     return f"{n} words read"
 
     def convert_file(self, words_file):
         "Converts items in file to a list of words."
@@ -40,6 +37,29 @@ class WordFinder:
     def random(self):
         "Outputs a random word from the file."
         return choice(self.word)
+
+
+class SpecialWordFinder(WordFinder):
+	"""Uses WordFinder, but does not return blank lines or comments.
+
+	>>> # Veggies	
+    kale
+    parsnips
+
+    >>> # Fruits
+    apple
+    mango
+	"kale" or "apple" 
+
+    >>> swf = SpecialWordFinder("complex.txt")
+    3 words read.
+
+    >>> swf.random()
+    "kale"
+	"""
+	
+	def convert_file(self, words_file):
+		return [line.strip() for line in words_file if line.strip() and not line.startswith("#")]
         
         
 
