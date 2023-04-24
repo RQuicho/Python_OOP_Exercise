@@ -11,5 +11,5 @@
 """
 
 class SpecialWordFinder:
-	choice()
-	file = 
+
+
